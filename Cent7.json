@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+      "name":"vmware_centos7_base",
+      "type":"vmware-iso",
+      "boot_command":[
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "iso_url":"{{ user `iso_url` }}",
+      "iso_checksum_type":"sha1",
+      "iso_checksum":"{{ user `iso_checksum` }}",
+      "headless":"{{ user `headless` }}",
+      "boot_wait":"10s",
+      "shutdown_command": "echo 'root'|sudo -S /sbin/halt -h -p",
+      "guest_os_type":"centos-64",
+      "http_directory": "http",
+      "ssh_username": "root",
+      "ssh_password": "Welcome1",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "vmx_data":{
+        "memsize":"4096",
+        "numvcpus":"2",
+        "scsi0.virtualDev":"lsisas1068",
+        "ethernet0.connectionType": "nat"
+      }
+    }  
+  ],
+  "variables":{
+    "headless":"false",
+    "iso_checksum":"71a7aa147877b413497cdff5b1e0aa5bc0c9484f",
+    "iso_url":"iso/CentOS-7-x86_64-Minimal-1611.iso"
+  }
+}
+
+    
