@@ -1,6 +1,6 @@
 iso
-output-vmware_2016_base
-output-virtualbox
+output-vmware*
+output-virtualbox*
 packer_cache
 *.iso
 *.box
