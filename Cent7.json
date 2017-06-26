@@ -14,7 +14,7 @@
       "shutdown_command": "echo 'root'|sudo -S /sbin/halt -h -p",
       "guest_os_type":"centos-64",
       "http_directory": "http",
-      "ssh_username": "root",
+      "ssh_username": "admintest",
       "ssh_password": "Welcome1",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
