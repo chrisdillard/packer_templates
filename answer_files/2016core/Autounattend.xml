@@ -134,8 +134,21 @@
             </AutoLogon>
       <FirstLogonCommands>
         <SynchronousCommand wcm:action="add">
-           <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\base_config_stg1.ps1</CommandLine>
-           <Order>1</Order>
+            <CommandLine>cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff"</CommandLine>
+            <Order>1</Order>
+            <RequiresUserInput>true</RequiresUserInput>
+        </SynchronousCommand>
+        <SynchronousCommand wcm:action="add">
+            <CommandLine>%SystemRoot%\System32\reg.exe ADD HKLM\SYSTEM\CurrentControlSet\Control\Power\ /v HibernateFileSizePercent /t REG_DWORD /d 0 /f</CommandLine>
+            <Order>2</Order>
+        </SynchronousCommand>
+        <SynchronousCommand wcm:action="add">
+            <CommandLine>%SystemRoot%\System32\reg.exe ADD HKLM\SYSTEM\CurrentControlSet\Control\Power\ /v HibernateEnabled /t REG_DWORD /d 0 /f</CommandLine>
+            <Order>3</Order>
+        </SynchronousCommand>
+        <SynchronousCommand wcm:action="add">
+            <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\base_config_stg1.ps1</CommandLine>
+            <Order>4</Order>
         </SynchronousCommand>
       </FirstLogonCommands>
     </component>
