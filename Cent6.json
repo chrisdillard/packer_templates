@@ -1,34 +1,43 @@
 {
   "builders": [
     {
-      "name":"vmware_centos6_base",
-      "type":"vmware-iso",
+      "name": "vmware_centos6_base",
+      "type": "vmware-iso",
       "boot_command":[
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ],
-      "iso_url":"{{ user `iso_url` }}",
-      "iso_checksum_type":"sha1",
-      "iso_checksum":"{{ user `iso_checksum` }}",
-      "headless":"{{ user `headless` }}",
-      "boot_wait":"10s",
-      "shutdown_command":"sudo -S shutdown -P now",
-      "guest_os_type":"centos-64",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum_type": "sha1",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "headless": "{{user `headless`}}",
+      "boot_wait": "10s",
+      "shutdown_command": "sudo -S shutdown -P now",
+      "guest_os_type": "centos-64",
       "http_directory": "http",
       "ssh_username": "admintest",
       "ssh_password": "Welcome1",
-      "ssh_port": 22,
+      "ssh_port": "22",
       "ssh_wait_timeout": "10000s",
+      "floppy_files":[
+          "http/ks.cfg"
+      ],
+      "remote_type": "esx5",
+      "remote_host": "{{user `remote_host`}}",
+      "remote_datastore": "{{user `remote_datastore`}}",
+      "remote_username": "{{user `remote_username`}}",
+      "remote_password": "{{user `remote_password`}}",
+      "vnc_disable_password": "true",
+      "keep_registered": "true",
+      "format": "vmx",
+      "version": "11",
       "vmx_data":{
-        "memsize":"4096",
-        "numvcpus":"2",
-        "scsi0.virtualDev":"lsisas1068",
-        "ethernet0.connectionType": "nat"
+        "memsize": "4096",
+        "numvcpus": "2",
+        "scsi0.virtualDev": "lsisas1068",
+        "ethernet0.virtualDev": "vmxnet3",
+        "ethernet0.networkName": "VM Network",
+        "ethernet0.connectionType": "bridged"
       }
-    }  
-  ],
-  "variables":{
-    "headless":"false",
-    "iso_checksum":"b23d4d996d2cb5b370120588d5ea18a9cfba7881",
-    "iso_url":"iso/CentOS-6.9-x86_64-minimal.iso"
-  }
+    }
+  ]
 }
