@@ -1,18 +1,9 @@
-#Disable Windows Firewall#
-Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+#Set Stage 3 Script to RunOnce
+Set-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name 'Stage_3' -Value "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe -noexit a:\base_config_stg3.ps1" -Force
 
-#Enable WinRM#
-Enable-WSManCredSSP -Force -Role Server
-set-wsmanquickconfig -force
-sc.exe config WinRM start=auto
+#Installing any additional updates from stage 1#
+Write-Host "Patching the patches."
+#Get-WUInstall -IgnoreReboot -AcceptAll
 
-#Allow WinRM unencrypted#
-Enable-PSRemoting -Force -SkipNetworkProfileCheck
-winrm set winrm/config/client/auth '@{Basic="true"}'
-winrm set winrm/config/service '@{AllowUnencrypted="true"}'
-winrm set winrm/config/service/auth '@{Basic="true"}'
-winrm set winrm/config '@{MaxTimeoutms="1800000"}'
-winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="2048"}'
-winrm set winrm/config/listener?Address=*+Transport=HTTP '@{Port="5985"}'
-
-Write-Host "Build Complete."
+#Reboot to apply updates#
+shutdown /r /c "Installing Additional Updates" /t 20

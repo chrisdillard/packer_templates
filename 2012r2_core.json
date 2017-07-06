@@ -19,6 +19,7 @@
           "answer_files/2012r2{{user `edition`}}/Autounattend.xml",
           "scripts/base_config_stg1.ps1",
           "scripts/base_config_stg2.ps1",
+          "scripts/base_config_stg3.ps1",
           "scripts/shutdown.bat"
       ],
       "vmx_data":{

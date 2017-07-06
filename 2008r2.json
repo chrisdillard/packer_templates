@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "name":"vmware_2012r2_base",
+      "name":"vmware_2008r2_base",
       "type":"vmware-iso",
       "iso_url":"{{ user `iso_url` }}",
       "iso_checksum_type":"sha1",
@@ -9,14 +9,14 @@
       "headless":"{{ user `headless` }}",
       "boot_wait":"2m",
       "shutdown_command":"a:/shutdown.bat",
-      "guest_os_type":"windows8srv-64",
+      "guest_os_type":"windows7srv-64",
       "communicator":"winrm",
       "winrm_username":"admin_test",
       "winrm_password":"Welcome1",
       "winrm_port":"5985",
       "winrm_timeout":"2h",
       "floppy_files":[
-          "answer_files/2012r2{{user `edition`}}/Autounattend.xml",
+          "answer_files/2008r2{{user `edition`}}/Autounattend.xml",
           "scripts/base_config_stg1.ps1",
           "scripts/base_config_stg2.ps1",
           "scripts/base_config_stg3.ps1",
@@ -33,9 +33,7 @@
   "variables":{
     "edition":"",
     "headless":"false",
-    "iso_checksum":"b0c719be13e9fd021d82d66c1f059a5590a85d9a",
-    "iso_url":"iso/Server2012r2_patched.iso"
+    "iso_checksum":"57c4ec382b5855435638a3984d8a86b2f9782ff7",
+    "iso_url":"iso/2008r2_Patched_07052017.iso"
   }
 }
-
-
