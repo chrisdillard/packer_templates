@@ -3,7 +3,7 @@ Set-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name
 
 #Installing any additional updates from stage 1#
 Write-Host "Patching the patches."
-#Get-WUInstall -IgnoreReboot -AcceptAll
+Get-WUInstall -IgnoreReboot -AcceptAll
 
 #Reboot to apply updates#
 shutdown /r /c "Installing Additional Updates" /t 20

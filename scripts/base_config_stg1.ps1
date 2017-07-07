@@ -23,7 +23,7 @@ Dism /online /enable-feature /featurename:NetFx3 /All /Source:D:\sources\sxs /Li
 
 #Installing Windows Updates#
 Write-Host "Installing Windows updates. This is going to take forever."
-#Get-WUInstall -IgnoreReboot -AcceptAll
+Get-WUInstall -IgnoreReboot -AcceptAll
 
 #Reboot to apply updates#
 shutdown /r /c "Installing Updates" /t 20

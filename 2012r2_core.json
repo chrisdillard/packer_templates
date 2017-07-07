@@ -1,39 +1,47 @@
 {
   "builders": [
     {
-      "name":"vmware_2012r2_core_base",
-      "type":"vmware-iso",
-      "iso_url":"{{ user `iso_url` }}",
-      "iso_checksum_type":"sha1",
-      "iso_checksum":"{{ user `iso_checksum` }}",
-      "headless":"{{ user `headless` }}",
-      "boot_wait":"2m",
-      "shutdown_command":"a:/shutdown.bat",
-      "guest_os_type":"windows8srv-64",
-      "communicator":"winrm",
-      "winrm_username":"admin_test",
-      "winrm_password":"Welcome1",
-      "winrm_port":"5985",
-      "winrm_timeout":"2h",
+      "name": "vmware_2012r2_core_base",
+      "type": "vmware-iso",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum_type": "sha1",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "headless": "{{user `headless`}}",
+      "boot_wait": "1m",
+      "shutdown_command": "a:/shutdown.bat",
+      "guest_os_type": "windows8srv-64",
+      "communicator": "winrm",
+      "winrm_username": "admin_test",
+      "winrm_password": "Welcome1",
+      "winrm_port": "5985",
+      "winrm_timeout": "2h",
       "floppy_files":[
           "answer_files/2012r2{{user `edition`}}/Autounattend.xml",
           "scripts/base_config_stg1.ps1",
           "scripts/base_config_stg2.ps1",
           "scripts/base_config_stg3.ps1",
-          "scripts/shutdown.bat"
+          "scripts/shutdown.bat",
+          "scripts/vmxnet3.cat",
+          "scripts/vmxnet3.inf",
+          "scripts/vmxnet3.sys",
+          "scripts/vmxnet3ver.dll"
       ],
+      "remote_type": "esx5",
+      "remote_host": "{{user `remote_host`}}",
+      "remote_datastore": "{{user `remote_datastore`}}",
+      "remote_username": "{{user `remote_username`}}",
+      "remote_password": "{{user `remote_password`}}",
+      "vnc_disable_password": "true",
+      "keep_registered": "true",
+      "format": "vmx",
+      "version": "11",
       "vmx_data":{
-        "memsize":"4096",
-        "numvcpus":"2",
-        "scsi0.virtualDev":"lsisas1068",
-        "ethernet0.connectionType": "nat"
+        "memsize": "4096",
+        "numvcpus": "2",
+        "scsi0.virtualDev": "lsisas1068",
+        "ethernet0.virtualDev": "vmxnet3",
+        "ethernet0.networkName": "VM Network"
       }
     }
-  ],
-  "variables":{
-    "edition":"core",
-    "headless":"false",
-    "iso_checksum":"b0c719be13e9fd021d82d66c1f059a5590a85d9a",
-    "iso_url":"iso/Server2012r2_patched.iso"
-  }
+  ]  
 }
