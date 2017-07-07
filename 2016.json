@@ -10,7 +10,6 @@
       "boot_wait": "1m",
       "shutdown_command": "a:/shutdown.bat",
       "guest_os_type": "windows9srv-64",
-      "tools_upload_flavor": "windows",
       "communicator": "winrm",
       "winrm_username": "admin_test",
       "winrm_password": "Welcome1",
@@ -21,7 +20,11 @@
           "scripts/base_config_stg1.ps1",
           "scripts/base_config_stg2.ps1",
           "scripts/base_config_stg3.ps1",
-          "scripts/shutdown.bat"
+          "scripts/shutdown.bat",
+          "scripts/vmxnet3.cat",
+          "scripts/vmxnet3.inf",
+          "scripts/vmxnet3.sys",
+          "scripts/vmxnet3ver.dll"
       ],
       "remote_type": "esx5",
       "remote_host": "{{user `remote_host`}}",
@@ -37,8 +40,7 @@
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.networkName": "VM Network",
-        "ethernet0.connectionType": "bridged"
+        "ethernet0.networkName": "VM Network"
       }
     }
   ]

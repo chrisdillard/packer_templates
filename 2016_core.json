@@ -7,7 +7,7 @@
       "iso_checksum_type": "sha1",
       "iso_checksum": "{{user `iso_checksum`}}",
       "headless": "{{user `headless`}}",
-      "boot_wait": "2m",
+      "boot_wait": "1m",
       "shutdown_command": "a:/shutdown.bat",
       "guest_os_type": "windows9srv-64",
       "communicator": "winrm",
@@ -20,7 +20,11 @@
           "scripts/base_config_stg1.ps1",
           "scripts/base_config_stg2.ps1",
           "scripts/base_config_stg3.ps1",
-          "scripts/shutdown.bat"
+          "scripts/shutdown.bat",
+          "scripts/vmxnet3.cat",
+          "scripts/vmxnet3.inf",
+          "scripts/vmxnet3.sys",
+          "scripts/vmxnet3ver.dll"
       ],
       "remote_type": "esx5",
       "remote_host": "{{user `remote_host`}}",
@@ -36,8 +40,7 @@
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.networkName": "VM Network",
-        "ethernet0.connectionType": "bridged"
+        "ethernet0.networkName": "VM Network"
       }
     }
   ]

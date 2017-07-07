@@ -4,7 +4,7 @@
       "name": "vmware_centos7_base",
       "type": "vmware-iso",
       "boot_command":[
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> inst.text inst.ks=hd:fd0:/ks.cfg <enter><wait>"
       ],
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "sha1",
@@ -13,7 +13,6 @@
       "boot_wait": "10s",
       "shutdown_command": "sudo -S shutdown -P now",
       "guest_os_type": "centos-64",
-      "http_directory": "http",
       "ssh_username": "admintest",
       "ssh_password": "Welcome1",
       "ssh_port": "22",
@@ -35,8 +34,7 @@
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.networkName": "VM Network",
-        "ethernet0.connectionType": "bridged"
+        "ethernet0.networkName": "VM Network"
       }
     }
   ]
