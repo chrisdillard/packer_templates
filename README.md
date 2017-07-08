@@ -1,6 +1,6 @@
 # packer_templates
 
-Packer templates using the vmware-iso builder for Windows and Linux and targeting a remote ESXi host. Minimal base configurations are set with the expectation that a config mgmt tool such as Chef will pick from there. 
+Packer templates using the vmware-iso builder for Windows and Linux and targeting a remote ESXi host. Minimal base configurations are set with the expectation that a config mgmt tool such as Chef will pick up from there. 
 
 ## Prerequisites
 * [Packer](https://www.packer.io/)
