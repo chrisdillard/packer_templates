@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "name": "vmware_2016_base",
+      "name": "vmware_2016{{user `edition`}}_base",
       "type": "vmware-iso",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "sha1",
@@ -33,7 +33,7 @@
       "remote_password": "{{user `remote_password`}}",
       "vnc_disable_password": "true",
       "keep_registered": "true",
-      "format": "vmx",
+      "skip_export": "true",
       "version": "11",
       "vmx_data":{
         "memsize": "4096",
