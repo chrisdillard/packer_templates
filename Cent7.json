@@ -16,7 +16,7 @@
       "ssh_username": "admintest",
       "ssh_password": "Welcome1",
       "ssh_port": "22",
-      "ssh_wait_timeout": "10000s",
+      "ssh_wait_timeout": "20m",
       "floppy_files":[
           "http/ks.cfg"
       ],
@@ -27,7 +27,7 @@
       "remote_password": "{{user `remote_password`}}",
       "vnc_disable_password": "true",
       "keep_registered": "true",
-      "format": "vmx",
+      "skip_export": "true",
       "version": "11",
       "vmx_data":{
         "memsize": "4096",
