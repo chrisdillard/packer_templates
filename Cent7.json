@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "name": "vmware_centos7_base",
+      "name": "{{user `name`}}",
       "type": "vmware-iso",
       "boot_command":[
         "<tab> inst.text inst.ks=hd:fd0:/ks.cfg <enter><wait>"
@@ -18,7 +18,7 @@
       "ssh_port": "22",
       "ssh_wait_timeout": "20m",
       "floppy_files":[
-          "http/ks.cfg"
+          "http/centos7/ks.cfg"
       ],
       "remote_type": "esx5",
       "remote_host": "{{user `remote_host`}}",

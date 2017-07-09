@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "name": "vmware_2016{{user `edition`}}_base",
+      "name": "{{user `name`}}",
       "type": "vmware-iso",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "sha1",

@@ -8,7 +8,7 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 
 #Install PSWindowsUpdate Module#
 #choco install pswindowsupdate
-Install-Module -Name PSWindowsUpdate -RequiredVersion 1.5.2.6 -Force
+Install-Module -Name PSWindowsUpdate -RequiredVersion 1.6.0.3 -Force
 Import-Module PSWindowsUpdate
 
 #Install Chef-Client

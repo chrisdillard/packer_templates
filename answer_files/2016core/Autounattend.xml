@@ -105,7 +105,7 @@
                 <NetworkLocation>Home</NetworkLocation>
                 <ProtectYourPC>1</ProtectYourPC>
             </OOBE>
-      <TimeZone>UTC</TimeZone>
+      <TimeZone>Central Standard Time</TimeZone>
       <UserAccounts>
         <AdministratorPassword>
           <Value>Welcome1</Value>
