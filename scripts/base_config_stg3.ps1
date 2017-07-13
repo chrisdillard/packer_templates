@@ -1,8 +1,8 @@
-#Log all updates installed
+#Log all updates installed#
 New-Item -Type Directory "C:\build"
 Get-WUHistory | Export-Csv "C:\build\Update_Log.csv"
 
-#Disable autologon
+#Disable autologon#
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "AutoAdminLogon" -Value "0"
 
 #Disable Windows Firewall#
