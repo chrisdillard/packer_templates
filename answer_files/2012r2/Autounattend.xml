@@ -74,8 +74,8 @@
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
-                <FullName>Test</FullName>
-                <Organization>TestCorp</Organization>
+                <FullName>2012r2_Std</FullName>
+                <Organization>Initech</Organization>
             </UserData>
         </component>
     </settings>  
@@ -105,38 +105,25 @@
                 <NetworkLocation>Home</NetworkLocation>
                 <ProtectYourPC>1</ProtectYourPC>
             </OOBE>
-      <TimeZone>Central Standard Time</TimeZone>
+      <TimeZone>UTC</TimeZone>
       <UserAccounts>
         <AdministratorPassword>
-          <Value>Welcome1</Value>
+          <Value>Password1!</Value>
           <PlainText>true</PlainText>
         </AdministratorPassword>
-        <LocalAccounts>
-          <LocalAccount wcm:action="add">
-            <Password>
-              <Value>Welcome1</Value>
-              <PlainText>true</PlainText>
-            </Password>
-            <Group>administrators</Group>
-            <DisplayName>admin_test</DisplayName>
-            <Name>admin_test</Name>
-            <Description>Local Admin Account</Description>
-          </LocalAccount>
-        </LocalAccounts>
       </UserAccounts>
             <AutoLogon>
                 <Password>
-                    <Value>Welcome1</Value>
+                    <Value>Password1!</Value>
                     <PlainText>true</PlainText>
                 </Password>
                 <Enabled>true</Enabled>
-                <Username>admin_test</Username>
+                <Username>administrator</Username>
             </AutoLogon>
       <FirstLogonCommands>
         <SynchronousCommand wcm:action="add">
-            <CommandLine>cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff"</CommandLine>
+            <CommandLine>%SystemRoot%\System32\reg.exe ADD HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff /f</CommandLine>
             <Order>1</Order>
-            <RequiresUserInput>true</RequiresUserInput>
         </SynchronousCommand>
         <SynchronousCommand wcm:action="add">
             <CommandLine>%SystemRoot%\System32\reg.exe ADD HKLM\SYSTEM\CurrentControlSet\Control\Power\ /v HibernateFileSizePercent /t REG_DWORD /d 0 /f</CommandLine>

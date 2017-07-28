@@ -1,0 +1,1 @@
+Start-Process msiexec.exe -Wait -ArgumentList '/I C:\build\VMwareTools64.msi /qn REBOOT=R'

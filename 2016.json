@@ -11,10 +11,10 @@
       "shutdown_command": "a:/shutdown.bat",
       "guest_os_type": "windows9srv-64",
       "communicator": "winrm",
-      "winrm_username": "admin_test",
-      "winrm_password": "Welcome1",
+      "winrm_username": "administrator",
+      "winrm_password": "Password1!",
       "winrm_port": "5985",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "4h",
       "floppy_files":[
           "answer_files/2016{{user `edition`}}/Autounattend.xml",
           "scripts/base_config_stg1.ps1",
@@ -35,13 +35,30 @@
       "keep_registered": "true",
       "skip_export": "true",
       "version": "11",
+      "disk_size": "51200",
       "vmx_data":{
         "memsize": "4096",
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.networkName": "VM Network"
+        "ethernet0.networkName": "VM Network",
+        "tools.syncTime": "FALSE"
       }
     }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "tools/VMwareTools64.msi",
+      "destination": "C:\\build\\VMwareTools64.msi"
+    },
+    {
+      "type": "powershell",
+      "script": "scripts/install_tools.ps1",
+      "elevated_user": "administrator",
+      "elevated_password": "Password1!"
+    }
   ]
-}
+}  
+
+

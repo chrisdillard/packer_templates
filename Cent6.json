@@ -16,7 +16,7 @@
       "ssh_username": "admintest",
       "ssh_password": "Welcome1",
       "ssh_port": "22",
-      "ssh_wait_timeout": "20m",
+      "ssh_wait_timeout": "30m",
       "floppy_files":[
           "http/centos6/ks.cfg"
       ],
@@ -34,7 +34,8 @@
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
-        "ethernet0.networkName": "VM Network"
+        "ethernet0.networkName": "VM Network",
+        "tools.syncTime": "FALSE"
       }
     }
   ]
