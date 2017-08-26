@@ -13,7 +13,7 @@
       "boot_wait": "10s",
       "shutdown_command": "sudo -S shutdown -P now",
       "guest_os_type": "centos-64",
-      "ssh_username": "admintest",
+      "ssh_username": "admin",
       "ssh_password": "Welcome1",
       "ssh_port": "22",
       "ssh_wait_timeout": "30m",
@@ -29,16 +29,45 @@
       "keep_registered": "true",
       "skip_export": "true",
       "version": "11",
+      "disk_size": "1024",
+      "disk_additional_size": "51200",
       "vmx_data":{
         "memsize": "4096",
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
         "ethernet0.networkName": "VM Network",
-        "tools.syncTime": "FALSE"
+        "tools.syncTime": "false",
+        "isolation.tools.diskWiper.disable": "true",
+        "isolation.tools.diskShrink.disable": "true",
+        "isolation.tools.copy.disable": "true",
+        "isolation.tools.paste.disable": "true",
+        "isolation.tools.dnd.disable": "true",
+        "isolation.tools.setGUIOptions.enable": "false",
+        "isolation.tools.memSchedFakeSampleStats.disable": "true",
+        "isolation.tools.ghi.launchmenu.change": "true",
+        "isolation.device.connectable.disable": "true",
+        "isolation.device.edit.disable": "true",
+        "vmci0.unrestricted": "false",
+        "tools.setInfo.sizeLimit": "1048576",
+        "tools.guestlib.enableHostInfo": "false",
+        "log.rotateSize": "100000",
+        "log.keepOld": "10",
+        "RemoteDisplay.maxConnections": "2"
       }
     }
-  ]
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["sleep 10"]
+    },
+    {
+      "type": "shell",
+      "execute_command": "{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+        "scripts/update.sh"
+      ]
+    }
+  ]  
 }
-
-    
