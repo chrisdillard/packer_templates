@@ -42,7 +42,23 @@
         "scsi0.virtualDev": "lsisas1068",
         "ethernet0.virtualDev": "vmxnet3",
         "ethernet0.networkName": "VM Network",
-        "tools.syncTime": "FALSE"
+        "tools.syncTime": "false",
+        "isolation.tools.diskWiper.disable": "true",
+        "isolation.tools.diskShrink.disable": "true",
+        "isolation.tools.copy.disable": "true",
+        "isolation.tools.paste.disable": "true",
+        "isolation.tools.dnd.disable": "true",
+        "isolation.tools.setGUIOptions.enable": "false",
+        "isolation.tools.memSchedFakeSampleStats.disable": "true",
+        "isolation.tools.ghi.launchmenu.change": "true",
+        "isolation.device.connectable.disable": "true",
+        "isolation.device.edit.disable": "true",
+        "vmci0.unrestricted": "false",
+        "tools.setInfo.sizeLimit": "1048576",
+        "tools.guestlib.enableHostInfo": "false",
+        "log.rotateSize": "100000",
+        "log.keepOld": "10",
+        "RemoteDisplay.maxConnections": "2"
       }
     }
   ],
@@ -50,7 +66,7 @@
     {
       "type": "file",
       "source": "tools/VMwareTools64.msi",
-      "destination": "C:\\build\\VMwareTools64.msi"
+      "destination": "C:\\Windows\\Temp\\VMwareTools64.msi"
     },
     {
       "type": "powershell",
@@ -58,5 +74,5 @@
       "elevated_user": "administrator",
       "elevated_password": "Password1!"
     }
-  ]
+  ]  
 }

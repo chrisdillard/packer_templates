@@ -1,6 +1,6 @@
 #Log all updates installed#
 New-Item -Type Directory "C:\build"
-Get-WUHistory | Export-Csv "C:\build\Update_Log.csv"
+Get-WUHistory | Export-Csv "C:\build\Windows_Update_Log.csv"
 
 #Disable autologon#
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "AutoAdminLogon" -Value "0"
