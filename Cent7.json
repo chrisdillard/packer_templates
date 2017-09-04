@@ -52,7 +52,7 @@
         "tools.setInfo.sizeLimit": "1048576",
         "tools.guestlib.enableHostInfo": "false",
         "log.rotateSize": "100000",
-        "log.keepOld": "10",
+        "log.keepOld": "2",
         "RemoteDisplay.maxConnections": "2"
       }
     }
@@ -66,7 +66,8 @@
       "type": "shell",
       "execute_command": "{{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": [
-        "scripts/update.sh"
+        "scripts/update.sh",
+        "scripts/reset.sh"
       ]
     }
   ]  
