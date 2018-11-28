@@ -1,0 +1,78 @@
+{
+    "builders": [
+      {
+        "name": "{{user `name`}}",
+        "type": "vmware-iso",
+        "iso_url": "{{user `iso_url`}}",
+        "iso_checksum_type": "sha1",
+        "iso_checksum": "{{user `iso_checksum`}}",
+        "headless": "{{user `headless`}}",
+        "boot_wait": "1m",
+        "shutdown_command": "a:/shutdown.bat",
+        "guest_os_type": "windows9srv-64",
+        "communicator": "winrm",
+        "winrm_username": "administrator",
+        "winrm_password": "Password1!",
+        "winrm_port": "5985",
+        "winrm_timeout": "4h",
+        "floppy_files":[
+            "answer_files/2019{{user `edition`}}/Autounattend.xml",
+            "scripts/base_config_stg1.ps1",
+            "scripts/base_config_stg2.ps1",
+            "scripts/base_config_stg3.ps1",
+            "scripts/shutdown.bat",
+            "scripts/vmxnet3.cat",
+            "scripts/vmxnet3.inf",
+            "scripts/vmxnet3.sys",
+            "scripts/vmxnet3ver.dll"
+        ],
+        "remote_type": "esx5",
+        "remote_host": "{{user `remote_host`}}",
+        "remote_datastore": "{{user `remote_datastore`}}",
+        "remote_username": "{{user `remote_username`}}",
+        "remote_password": "{{user `remote_password`}}",
+        "vnc_disable_password": "true",
+        "keep_registered": "true",
+        "skip_export": "true",
+        "version": "11",
+        "disk_size": "51200",
+        "vmx_data":{
+          "memsize": "4096",
+          "numvcpus": "2",
+          "scsi0.virtualDev": "lsisas1068",
+          "ethernet0.virtualDev": "vmxnet3",
+          "ethernet0.networkName": "VM Network",
+          "tools.syncTime": "false",
+          "isolation.tools.diskWiper.disable": "true",
+          "isolation.tools.diskShrink.disable": "true",
+          "isolation.tools.copy.disable": "true",
+          "isolation.tools.paste.disable": "true",
+          "isolation.tools.dnd.disable": "true",
+          "isolation.tools.setGUIOptions.enable": "false",
+          "isolation.tools.memSchedFakeSampleStats.disable": "true",
+          "isolation.tools.ghi.launchmenu.change": "true",
+          "isolation.device.connectable.disable": "true",
+          "isolation.device.edit.disable": "true",
+          "vmci0.unrestricted": "false",
+          "tools.setInfo.sizeLimit": "1048576",
+          "tools.guestlib.enableHostInfo": "false",
+          "log.rotateSize": "100000",
+          "log.keepOld": "2",
+          "RemoteDisplay.maxConnections": "2"
+        }
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "file",
+        "source": "tools/VMwareTools64.msi",
+        "destination": "C:\\Windows\\Temp\\VMwareTools64.msi"
+      },
+      {
+        "type": "powershell",
+        "script": "scripts/install_tools.ps1",
+        "elevated_user": "administrator",
+        "elevated_password": "Password1!"
+      }
+    ]
+  }  
