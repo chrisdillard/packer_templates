@@ -12,7 +12,7 @@
       "headless": "{{user `headless`}}",
       "boot_wait": "10s",
       "shutdown_command": "sudo -S shutdown -P now",
-      "guest_os_type": "centos-64",
+      "guest_os_type": "centos7-64",
       "ssh_username": "admin",
       "ssh_password": "Welcome1",
       "ssh_port": "22",
