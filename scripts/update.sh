@@ -12,6 +12,6 @@ else
     yum localinstall epel-release-latest-7.noarch.rpm -y
 fi
 
-yum install open-vm-tools curl rsyslog man man-pages bind-utils -y
+yum install open-vm-tools curl rsyslog man man-pages bind-utils chrony lsof tcpdump ed mc unzip tmux nc -y
 yum upgrade -y
 yum clean all
